@@ -66,9 +66,9 @@
         <div class="modal-body">
             <form id="password_form">
                 @csrf
-                <div class="mb-3 form-group">
+                <div class="mb-3 form-group d-none">
                   <label class="form-label"><b>Old password </b><span class="text-danger">*</span></label>
-                  <input class="form-control" type="password" name="old_password" id="old_password" required>
+                  <input class="form-control" type="password" name="old_password" id="old_password" >
                 </div>
                 <div class="mb-3 form-group">
                     <label class="form-label"><b>New password </b><span class="text-danger">*</span></label>

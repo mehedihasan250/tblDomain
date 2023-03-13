@@ -144,7 +144,7 @@ class HomeController extends Controller
     public function passwordReset(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'old_password' => ['required', 'string'],
+            // 'old_password' => ['required', 'string'],
             'new_password' => ['required', 'string', 'min:6', 'same:password_confirmation'],
         ]);
 
@@ -153,18 +153,12 @@ class HomeController extends Controller
             
         }
 
-        if(Hash::check($request->old_password, auth()->user()->password)){
-            User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-            return [
-                'html' => 'Password updated successfuly.',
-                'status' => 'success'
-            ];
-        }else{
-            return [
-                'status' => 'error',
-                'html' => 'Old password is invalid.'
-            ];
-        }
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+        return [
+            'html' => 'Password updated successfuly.',
+            'status' => 'success'
+        ];
+
 
     }
 }
